@@ -4,6 +4,7 @@
     <string name="editCard">Редактировать</string>
     <string name="deleteCard">Удалить</string>
     <string name="aboutProrgamm">О программе</string>
+    <string name="notes">Список</string>
 
     <array name="arraнNameNote">
         <item>Заметка 1</item>
