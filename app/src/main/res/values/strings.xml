@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Заметки</string>
+    <string name="addCard">Добавить</string>
+    <string name="editCard">Редактировать</string>
+    <string name="deleteCard">Удалить</string>
+    <string name="aboutProrgamm">О программе</string>
+
+    <array name="arraнNameNote">
+        <item>Заметка 1</item>
+        <item>Заметка 2</item>
+        <item>Заметка 3</item>
+        <item>Заметка 4</item>
+        <item>Заметка 5</item>
+        <item>Заметка 6</item>
+        <item>Заметка 7</item>
+        <item>Заметка 8</item>
+        <item>Заметка 9</item>
+        <item>Заметка 10</item>
+
+    </array>
+
+</resources>

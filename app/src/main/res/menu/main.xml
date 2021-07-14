@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:App="http://schemas.android.com/apk/res-auto">
+<item
+    android:id="@+id/addCard"
+    android:orderInCategory="5"
+    android:icon="@android:drawable/ic_input_add"
+    android:title="@string/addCard"
+    App:showAsAction="never"></item>
+    <item
+        android:id="@+id/editCard"
+        android:orderInCategory="10"
+        android:icon="@android:drawable/ic_input_add"
+        android:title="@string/editCard"
+        App:showAsAction="never"></item>
+    <item
+        android:id="@+id/deleteCard"
+        android:orderInCategory="15"
+        android:icon="@android:drawable/ic_input_add"
+        android:title="@string/deleteCard"
+        App:showAsAction="never"></item>
+    <item
+        android:id="@+id/suprizeCard"
+        android:orderInCategory="15"
+        android:icon="@android:drawable/ic_input_add"
+        android:title="@string/aboutProrgamm"
+        App:showAsAction="never"></item>
+</menu>
