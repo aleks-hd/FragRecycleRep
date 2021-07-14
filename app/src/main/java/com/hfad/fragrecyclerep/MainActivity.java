@@ -3,11 +3,15 @@ package com.hfad.fragrecyclerep;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.hfad.fragrecyclerep.fragments.OpenNodesFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -57,7 +61,12 @@ public class MainActivity extends AppCompatActivity {
 
    void openNodes(){
        Log.d("LOGIII", "OpenCard !!!");
-       
+       OpenNodesFragment openNotes = new OpenNodesFragment();
+     //  openNotes.setArguments(getIntent().getExtras());
+       FragmentManager fragmentManager = getSupportFragmentManager();
+       FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+       fragmentTransaction.replace(R.id.fragmentContainer1,openNotes);
+              fragmentTransaction.commit();
 
     }
 
