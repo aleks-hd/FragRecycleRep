@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 
 import com.hfad.fragrecyclerep.R;
 import com.hfad.fragrecyclerep.model.Notes;
@@ -32,6 +33,7 @@ public class OpenNodesFragment extends Fragment {
     private String mParam2;
     ArrayList<Notes> arrayList;
     Notes notes;
+
 
     public static OpenNodesFragment newInstance(String param1, String param2) {
         OpenNodesFragment fragment = new OpenNodesFragment();
@@ -56,7 +58,13 @@ public class OpenNodesFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_open_nodes, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        initNotes();
+//???
+        if (savedInstanceState != null) {
+
+        } else {
+            initNotes();
+        }
+
         initRecyclerView(recyclerView, arrayList);
         return view;
     }
@@ -81,8 +89,8 @@ public class OpenNodesFragment extends Fragment {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragmentContainer1, editFragment)
-        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-        .commit();
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .commit();
     }
 
     @Override

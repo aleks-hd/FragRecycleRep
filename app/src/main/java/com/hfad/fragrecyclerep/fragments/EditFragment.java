@@ -6,9 +6,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.hfad.fragrecyclerep.R;
@@ -27,9 +29,10 @@ public class EditFragment extends Fragment {
     TextView name, description;
     Notes notes;
     int position;
+    Button btnSave;
     private String mParam1;
     private String mParam2;
-
+    String name1,description1;
     public EditFragment() {
 
     }
@@ -67,13 +70,30 @@ public class EditFragment extends Fragment {
     private void initTextView(View view) {
         name = view.findViewById(R.id.editName);
         description = view.findViewById(R.id.editDescription);
+        btnSave = view.findViewById(R.id.btnSave);
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                initSaveNotes(view);
+            }
+        });
         //достали объект по позиции
         notes =arrayList.get(position);
         name.setText(notes.getName());
         description.setText(notes.getDescription());
+
     }
 
-
+    private void initSaveNotes(View view) {
+       /* notes.setName((String) name.getText());
+        notes.setDescription((String) description.getText());*/
+        Log.d("Save", "надо реализовать сохранение");
+        name1 =  name.getText().toString();
+        description1 = description.getText().toString();
+        Log.d("Save", name1+"$"+description1);
+        notes.setName(name1);
+        notes.setDescription(description1);
+    }
 
 
     @Override
