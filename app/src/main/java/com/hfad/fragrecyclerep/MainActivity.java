@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-   void initToolbar(){
+    void initToolbar() {
         Toolbar toolbar = findViewById(R.id.tooolbarContainer);
         setSupportActionBar(toolbar);
     }
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        switch (id){
+        switch (id) {
             case R.id.openCard:
                 openNodes();
                 return true;
@@ -59,14 +59,15 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-   void openNodes(){
-       Log.d("LOGIII", "OpenCard !!!");
-       OpenNodesFragment openNotes = new OpenNodesFragment();
-     //  openNotes.setArguments(getIntent().getExtras());
-       FragmentManager fragmentManager = getSupportFragmentManager();
-       FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-       fragmentTransaction.replace(R.id.fragmentContainer1,openNotes);
-              fragmentTransaction.commit();
+    //отрыть фрагмент со списком массива
+    void openNodes() {
+        Log.d("LOGIII", "OpenCard !!!");
+        OpenNodesFragment openNotes = new OpenNodesFragment();
+        //  openNotes.setArguments(getIntent().getExtras());
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentContainer1, openNotes);
+        fragmentTransaction.commit();
 
     }
 

@@ -6,7 +6,7 @@
     <string name="aboutProrgamm">О программе</string>
     <string name="notes">Список</string>
 
-    <array name="arraнNameNote">
+    <array name="arrayNameNote">
         <item>Заметка 1</item>
         <item>Заметка 2</item>
         <item>Заметка 3</item>
@@ -19,7 +19,6 @@
         <item>Заметка 10</item>
 
     </array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+   <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

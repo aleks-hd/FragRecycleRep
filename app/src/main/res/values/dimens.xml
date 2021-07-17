@@ -2,4 +2,7 @@
 <resources>
     <dimen name="zero">0dp</dimen>
     <dimen name="textViewSize">20sp</dimen>
+    <dimen name="sizeImageItem">50dp</dimen>
+    <dimen name="sizeImageItemHeight">50dp</dimen>
+    <dimen name="textSizeItem">20sp</dimen>
 </resources>
