@@ -5,4 +5,5 @@
     <dimen name="sizeImageItem">50dp</dimen>
     <dimen name="sizeImageItemHeight">50dp</dimen>
     <dimen name="textSizeItem">20sp</dimen>
+    <dimen name="sizeTextDescription">12sp</dimen>
 </resources>

@@ -5,12 +5,15 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.hfad.fragrecyclerep.R;
 import com.hfad.fragrecyclerep.model.Notes;
@@ -65,6 +68,21 @@ public class OpenNodesFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         AdapterNotes adapterNotes = new AdapterNotes(arrayList);
         recyclerView.setAdapter(adapterNotes);
+        adapterNotes.SetOnClickListener(new AdapterNotes.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                initEditRecyclerNote(view, position);
+            }
+        });
+    }
+
+    private void initEditRecyclerNote(View view, int position) {
+        EditFragment editFragment = new EditFragment(arrayList, position);
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentContainer1, editFragment)
+        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+        .commit();
     }
 
     @Override
@@ -76,13 +94,18 @@ public class OpenNodesFragment extends Fragment {
     private void initNotes() {
         arrayList = new ArrayList<>();
         String[] arrayNotes = getResources().getStringArray(R.array.arrayNameNote);
+        String[] arrayNotesDescription = getResources().getStringArray(R.array.arrayDescriptionNote);
         for (int i = 0; i < arrayNotes.length; i++) {
             notes = new Notes();
+            String Desc = arrayNotesDescription[i];
             String name = arrayNotes[i];
+            notes.setDescription(Desc);
             notes.setName(name);
             arrayList.add(notes);
         }
 
     }
+
+
 }
 

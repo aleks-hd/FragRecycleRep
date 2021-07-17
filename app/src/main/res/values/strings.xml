@@ -19,6 +19,21 @@
         <item>Заметка 10</item>
 
     </array>
-   <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <array name="arrayDescriptionNote">
+        <item>Описание заметки 1</item>
+        <item>Описание заметки 2</item>
+        <item>Описание заметки 3</item>
+        <item>Описание заметки 4</item>
+        <item>Описание заметки 5</item>
+        <item>Описание заметки 6</item>
+        <item>Описание заметки 7</item>
+        <item>Описание заметки 8</item>
+        <item>Описание заметки 9</item>
+        <item>Описание заметки 10</item>
+    </array>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
