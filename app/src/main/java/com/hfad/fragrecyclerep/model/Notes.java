@@ -1,22 +1,58 @@
 package com.hfad.fragrecyclerep.model;
 
-public class Notes {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.util.Date;
+
+public class Notes implements Parcelable {
     private String name;
-    private String Description;
+    private String description;
     private int pictures; //храним идентификатор картинки в ресурсах
-    private int date;
+    private Date date;
     private boolean like;
+
+    public static final Creator<Notes> CREATOR = new Creator<Notes>() {
+        @Override
+        public Notes createFromParcel(Parcel in) {
+            return new Notes(in);
+        }
+
+        @Override
+        public Notes[] newArray(int size) {
+            return new Notes[size];
+        }
+    };
 
     public boolean isLike() {
         return like;
     }
 
+    public Notes(String name, String description, int pictures, Date date, boolean like) {
+        this.name = name;
+        this.description = description;
+        this.pictures = pictures;
+        this.date = date;
+        this.like = like;
+    }
+
     public Notes(String name, String description, int pictures, boolean like) {
         this.name = name;
-        Description = description;
+        description = description;
         this.pictures = pictures;
         this.like = like;
     }
+
+    public Notes(Parcel in){
+        name = in.readString();
+        description = in.readString();
+        pictures = in.readInt();
+        like = in.readByte() != 0;
+        date = new Date(in.readLong());
+
+    }
+
+
 
     public void setLike(boolean like) {
         this.like = like;
@@ -31,11 +67,11 @@ public class Notes {
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        description = description;
     }
 
     public int getPictures() {
@@ -46,11 +82,23 @@ public class Notes {
         this.pictures = pictures;
     }
 
-    public int getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(int date) {
-        this.date = date;
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(name);
+        parcel.writeString(description);
+        parcel.writeInt(pictures);
+        parcel.writeByte((byte) (like?1:0));
+        parcel.writeLong(date.getTime());
     }
 }

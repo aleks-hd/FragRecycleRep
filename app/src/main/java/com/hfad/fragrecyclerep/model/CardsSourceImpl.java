@@ -7,6 +7,7 @@ import com.hfad.fragrecyclerep.CardsSource;
 import com.hfad.fragrecyclerep.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class CardsSourceImpl implements CardsSource {
@@ -24,7 +25,7 @@ public class CardsSourceImpl implements CardsSource {
         String[] description = resources.getStringArray(R.array.arrayDescriptionNote);
         int[] pictures = getImageArray();
         for (int i = 0; i < description.length; i++) {
-            dataSource.add(new Notes(titles[i], description[i], pictures[i], false));
+            dataSource.add(new Notes(titles[i], description[i], pictures[i],  Calendar.getInstance().getTime(),false));
         }
         return this;
     }

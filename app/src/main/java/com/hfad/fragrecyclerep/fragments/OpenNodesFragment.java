@@ -76,7 +76,7 @@ public class OpenNodesFragment extends Fragment {
     }
 
     private void initView(View view) {
-    recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView = view.findViewById(R.id.recyclerView);
         data = new CardsSourceImpl(getResources()).init();
         initRecyclerView();
     }
@@ -86,24 +86,16 @@ public class OpenNodesFragment extends Fragment {
         int id = item.getItemId();
         switch (id) {
             case R.id.openCard:
-
+                initRecyclerView();
                 return true;
             case R.id.addCard:
-                data.addNotes(new Notes("Заметка "+(data.size()+1),
-                        "Описание заметки "+(data.size()+1),
-                        R.drawable.space1,false));
-               // adapterNotes.notifyItemInserted(data.size());
+                data.addNotes(new Notes("Заметка " + (data.size() + 1),
+                        "Описание заметки " + (data.size() + 1),
+                        R.drawable.space1, false));
+                // adapterNotes.notifyItemInserted(data.size());
                 //если весь список очистить топри создании нужен:
                 adapterNotes.notifyDataSetChanged();
                 Log.d("LOGIII", "addCard !!!");
-                return true;
-            case R.id.editCard:
-                Log.d("LOGIII", "editCard !!!");
-                return true;
-            case R.id.deleteCard:
-                data.clearCardData();
-                adapterNotes.notifyDataSetChanged();
-                Log.d("LOGIII", "deleteCard !!!");
                 return true;
             case R.id.suprizeCard:
                 Log.d("LOGIII", "aboutProgramm !!!");
@@ -123,7 +115,7 @@ public class OpenNodesFragment extends Fragment {
         adapterNotes.SetOnClickListener(new AdapterNotes.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-              //  initEditRecyclerNote(view, position);
+                //  initEditRecyclerNote(view, position);
             }
         });
     }
@@ -132,18 +124,18 @@ public class OpenNodesFragment extends Fragment {
     public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, @Nullable ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater inflater = requireActivity().getMenuInflater();
-        inflater.inflate(R.menu.item_menu,menu);
+        inflater.inflate(R.menu.item_menu, menu);
 
     }
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         int position = adapterNotes.getMenuPosition();
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.item_update:
-                data.updateNotes(position,new Notes("new Заметка"+(data.size()+1),
+                data.updateNotes(position, new Notes("new Заметка" + (data.size() + 1),
                         data.getCardData(position).getDescription(),
-                        data.getCardData(position).getPictures(),false));
+                        data.getCardData(position).getPictures(), false));
                 adapterNotes.notifyItemChanged(position);
                 return true;
             case R.id.item_delete:
@@ -169,7 +161,7 @@ public class OpenNodesFragment extends Fragment {
     }
 
 
-    }
+}
 
 
 

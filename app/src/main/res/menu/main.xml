@@ -15,18 +15,8 @@
         android:orderInCategory="5"
         android:title="@string/addCard"
         App:showAsAction="never"></item>
-    <item
-        android:id="@+id/editCard"
-        android:orderInCategory="10"
 
-        android:title="@string/editCard"
-        App:showAsAction="never"></item>
-    <item
-        android:id="@+id/deleteCard"
-        android:orderInCategory="15"
 
-        android:title="@string/deleteCard"
-        App:showAsAction="never"></item>
     <item
         android:id="@+id/suprizeCard"
         android:orderInCategory="15"
