@@ -12,7 +12,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/viewImage"
-        android:layout_width="@dimen/sizeImageItem"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/sizeImageItemHeight" />
 
     <TextView
@@ -21,4 +22,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:textSize="@dimen/sizeTextDescription" />
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/checkbox"
+        android:layout_gravity="bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </androidx.cardview.widget.CardView>

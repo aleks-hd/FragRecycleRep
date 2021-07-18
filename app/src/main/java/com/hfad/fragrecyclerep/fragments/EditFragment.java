@@ -37,8 +37,7 @@ public class EditFragment extends Fragment {
 
     }
 
-    public EditFragment(ArrayList<Notes> arrayList, int position) {
-        this.arrayList = arrayList;
+    public EditFragment(int position) {
         this.position = position;
     }
 
@@ -77,10 +76,7 @@ public class EditFragment extends Fragment {
                 initSaveNotes(view);
             }
         });
-        //достали объект по позиции
-        notes =arrayList.get(position);
-        name.setText(notes.getName());
-        description.setText(notes.getDescription());
+
 
     }
 

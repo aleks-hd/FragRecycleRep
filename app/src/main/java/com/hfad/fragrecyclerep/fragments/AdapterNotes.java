@@ -5,29 +5,26 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.appcompat.widget.AppCompatImageView;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.hfad.fragrecyclerep.CardsSource;
 import com.hfad.fragrecyclerep.R;
 import com.hfad.fragrecyclerep.model.Notes;
 
-import java.util.ArrayList;
 
 
 public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.ViewHolder> {
 
-    private ArrayList<Notes> arrayList;
 
+    private final static String TAG = "SocialNetworkAdapter";
+    private CardsSource dataSource;
     private OnItemClickListener itemClickListener;
 
-    public AdapterNotes(ArrayList<Notes> arrayList) {
-        this.arrayList = arrayList;
+    public AdapterNotes(CardsSource dataSource) {
+        this.dataSource = dataSource;
     }
 
     @NonNull
@@ -40,14 +37,13 @@ public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull AdapterNotes.ViewHolder holder, int position) {
 
-        Notes notes = arrayList.get(position);
-        holder.getTextView().setText(notes.getName());
-        holder.getDescrip().setText(notes.getDescription());
+        holder.setData(dataSource.getCardData(position));
+
     }
 
     @Override
     public int getItemCount() {
-        return arrayList.size();
+        return dataSource.size();
     }
 
     public void SetOnClickListener(OnItemClickListener itemClickListener) {
@@ -59,34 +55,34 @@ public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textView, descrip;
+        TextView title, descrip;
         AppCompatImageView imageView;
+        AppCompatCheckBox checkBox;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.namesNote);
+            title = itemView.findViewById(R.id.namesNote);
             imageView = itemView.findViewById(R.id.viewImage);
             descrip = itemView.findViewById(R.id.descriptionNote);
+            checkBox = itemView.findViewById(R.id.checkbox);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Log.d("click", "нажатие" + getAdapterPosition());
                     if (itemClickListener != null) {
-                        itemClickListener.onItemClick(view, getAdapterPosition() );
+                        itemClickListener.onItemClick(view, getAdapterPosition());
                     }
 
                 }
             });
         }
 
-        public TextView getTextView() {
-            return textView;
+        public void setData(Notes cardData) {
+            title.setText(cardData.getName());
+            descrip.setText(cardData.getDescription());
+            checkBox.setChecked(cardData.isLike());
+            imageView.setImageResource(cardData.getPictures());
         }
-
-        public TextView getDescrip() {
-            return descrip;
-        }
-
     }
 
 

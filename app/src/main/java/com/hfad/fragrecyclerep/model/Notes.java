@@ -5,6 +5,22 @@ public class Notes {
     private String Description;
     private int pictures; //храним идентификатор картинки в ресурсах
     private int date;
+    private boolean like;
+
+    public boolean isLike() {
+        return like;
+    }
+
+    public Notes(String name, String description, int pictures, boolean like) {
+        this.name = name;
+        Description = description;
+        this.pictures = pictures;
+        this.like = like;
+    }
+
+    public void setLike(boolean like) {
+        this.like = like;
+    }
 
     public String getName() {
         return name;
