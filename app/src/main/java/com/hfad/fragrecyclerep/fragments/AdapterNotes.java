@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import com.hfad.fragrecyclerep.CardsSource;
 import com.hfad.fragrecyclerep.R;
@@ -22,9 +23,16 @@ public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.ViewHolder> 
     private final static String TAG = "SocialNetworkAdapter";
     private CardsSource dataSource;
     private OnItemClickListener itemClickListener;
+    private final Fragment fragment;
+    private int menuPosition;
 
-    public AdapterNotes(CardsSource dataSource) {
+    public int getMenuPosition(){
+        return menuPosition;
+    }
+
+    public AdapterNotes(CardsSource dataSource, Fragment fragment) {
         this.dataSource = dataSource;
+        this.fragment = fragment;
     }
 
     @NonNull
@@ -65,6 +73,7 @@ public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.ViewHolder> 
             imageView = itemView.findViewById(R.id.viewImage);
             descrip = itemView.findViewById(R.id.descriptionNote);
             checkBox = itemView.findViewById(R.id.checkbox);
+            registeryContexMenu(itemView);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -75,6 +84,27 @@ public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.ViewHolder> 
 
                 }
             });
+            imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    menuPosition = getLayoutPosition();
+                    itemView.showContextMenu(20,20);
+                    return true;
+                }
+            });
+        }
+
+        private void registeryContexMenu(View itemView) {
+            if (fragment!=null){
+                imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View view) {
+                        menuPosition = getLayoutPosition();
+                        return false;
+                    }
+                });
+                fragment.registerForContextMenu(itemView);
+            }
         }
 
         public void setData(Notes cardData) {

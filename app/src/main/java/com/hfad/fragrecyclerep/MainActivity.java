@@ -20,9 +20,7 @@ import com.hfad.fragrecyclerep.model.Notes;
 
 public class MainActivity extends AppCompatActivity {
 
-    private CardsSource data;
-    private RecyclerView recyclerView;
-    private AdapterNotes adapterNotes;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,39 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
-  /*  @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
 
-        return super.onCreateOptionsMenu(menu);
-    }
-*/
-
-
-  /*  @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        switch (id) {
-            case R.id.openCard:
-                openNodes();
-                return true;
-            case R.id.addCard:
-
-                Log.d("LOGIII", "addCard !!!");
-                return true;
-            case R.id.editCard:
-                Log.d("LOGIII", "editCard !!!");
-                return true;
-            case R.id.deleteCard:
-
-                Log.d("LOGIII", "deleteCard !!!");
-                return true;
-            case R.id.suprizeCard:
-                Log.d("LOGIII", "aboutProgramm !!!");
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }*/
 
     //отрыть фрагмент со списком массива
     void openNodes() {

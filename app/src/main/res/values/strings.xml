@@ -49,5 +49,7 @@
     </string-array>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="update">Изменение</string>
+    <string name="itemDelete">Удалить</string>
 
 </resources>

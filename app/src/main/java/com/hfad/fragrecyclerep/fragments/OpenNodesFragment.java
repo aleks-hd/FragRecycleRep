@@ -11,21 +11,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
 
 import com.hfad.fragrecyclerep.CardsSource;
 import com.hfad.fragrecyclerep.R;
 import com.hfad.fragrecyclerep.model.CardsSourceImpl;
 import com.hfad.fragrecyclerep.model.Notes;
-
-import java.util.ArrayList;
 
 
 public class OpenNodesFragment extends Fragment {
@@ -121,17 +118,42 @@ public class OpenNodesFragment extends Fragment {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
-        adapterNotes = new AdapterNotes(data);
+        adapterNotes = new AdapterNotes(data, this);
         recyclerView.setAdapter(adapterNotes);
         adapterNotes.SetOnClickListener(new AdapterNotes.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                initEditRecyclerNote(view, position);
+              //  initEditRecyclerNote(view, position);
             }
         });
     }
 
-    //изменить конструктор
+    @Override
+    public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, @Nullable ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = requireActivity().getMenuInflater();
+        inflater.inflate(R.menu.item_menu,menu);
+
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        int position = adapterNotes.getMenuPosition();
+        switch (item.getItemId()){
+            case R.id.item_update:
+                data.updateNotes(position,new Notes("new Заметка"+(data.size()+1),
+                        data.getCardData(position).getDescription(),
+                        data.getCardData(position).getPictures(),false));
+                adapterNotes.notifyItemChanged(position);
+                return true;
+            case R.id.item_delete:
+                data.deleteNotes(position);
+                adapterNotes.notifyItemRemoved(position);
+                return true;
+        }
+        return super.onContextItemSelected(item);
+    }
+
     private void initEditRecyclerNote(View view, int position) {
         EditFragment editFragment = new EditFragment(position);
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
@@ -146,21 +168,10 @@ public class OpenNodesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
-    //создать список объектов
-    private void initNotes() {
-     /*   arrayList = new ArrayList<>();
-        String[] arrayNotes = getResources().getStringArray(R.array.arrayNameNote);
-        String[] arrayNotesDescription = getResources().getStringArray(R.array.arrayDescriptionNote);
-        for (int i = 0; i < arrayNotes.length; i++) {
-            notes = new Notes();
-            String Desc = arrayNotesDescription[i];
-            String name = arrayNotes[i];
-            notes.setDescription(Desc);
-            notes.setName(name);
-            arrayList.add(notes);*/
+
     }
 
-}
+
 
 
 

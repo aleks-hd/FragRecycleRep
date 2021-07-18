@@ -16,7 +16,6 @@ import android.widget.TextView;
 import com.hfad.fragrecyclerep.R;
 import com.hfad.fragrecyclerep.model.Notes;
 
-import java.util.ArrayList;
 
 
 public class EditFragment extends Fragment {
@@ -25,7 +24,7 @@ public class EditFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    ArrayList<Notes> arrayList;
+
     TextView name, description;
     Notes notes;
     int position;
